@@ -1,0 +1,21 @@
+// ===== _variables.scss (Versione per Effetti Neon & Glow) =====
+
+// --- Palette Principale (I tuoi colori, perfetti per questo stile) ---
+$primary-blue: #007bff;      // Un blu leggermente più vibrante per il neon
+$dark-blue: #0d4f83;       // Ottimo per sfondi o elementi scuri
+$navy-blue: #02040a;       // Un blu/nero profondissimo, quasi nero, per lo sfondo principale
+$slate-gray: #8a9eb2;      // Un grigio-azzurro per testi secondari
+
+// --- Colore d'Accento (Il tuo oro, perfetto per un glow caldo) ---
+$gold-accent: #ffd700;
+$gold-gradient: linear-gradient(145deg, #fde488, #f8c24c, #e9a22f, #fde488);
+
+// --- Colori di Base per il Massimo Contrasto ---
+$white: #f0f8ff;        
+$black: #0B0C10;          
+$light-gray: #1c2541;
+$medium-gray: #e9ecef;  
+
+// --- Breakpoints (invariati) ---
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;

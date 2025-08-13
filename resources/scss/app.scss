@@ -1,0 +1,37 @@
+
+// 1. Abstracts (variabili e mixin devono essere i primi!)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// 2. Vendors (CSS di terze parti)
+// @import 'vendors/bootstrap';
+
+// 3. Base (stili fondamentali)
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/base';
+@import 'base/animations';
+
+// 4. Layout (struttura del sito)
+@import 'layout/logo';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/navigation';
+@import 'layout/hamburger-menu';
+@import 'layout/wrapper';
+
+// 5. Components (i nostri mattoncini)
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/equipment-form'; // Ecco il nostro form!
+@import 'components/theme-toggle';
+
+// 6. Pages (stili specifici per pagina)
+@import 'pages/home';
+
+// 7. Themes (se presenti)
+@import 'themes/light-theme';
+@import 'themes/dark-theme';
+
+// CSS Globale per la visibilità dei loghi
+

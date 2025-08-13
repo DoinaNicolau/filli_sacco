@@ -1,0 +1,38 @@
+// Stile del logo
+.site-logo {
+    flex-shrink: 0;
+    
+    // --- MODIFICA QUI ---
+    // Applichiamo l'altezza direttamente al link contenitore
+    height: 50px; 
+    display: flex;
+    align-items: center;
+
+    .logo-light, .logo-dark {
+        // Ora questi elementi si adatteranno all'altezza del genitore <a>
+        height: 100%;
+        
+        svg {
+            height: 100%;
+            width: auto;
+        }
+    }
+}
+
+
+
+.logo-light {
+    display: block;
+}
+
+.logo-dark {
+    display: none;
+}
+
+html.dark-mode .logo-light {
+    display: none;
+}
+
+html.dark-mode .logo-dark {
+    display: block;
+}

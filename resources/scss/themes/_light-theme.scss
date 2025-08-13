@@ -1,0 +1,37 @@
+// ===== _light-theme.scss (TEMA CHIARO - DEFAULT) =====
+
+:root {
+    // --- Palette di Base ---
+    --color-primary: #{$primary-blue};
+    --color-accent: #{$gold-accent};
+
+    // --- Sfondi ---
+    --bg-primary: #{$white};
+    --bg-secondary: #{$light-gray};
+    // Per la Hero, sfondo "glass" semi-trasparente
+    --bg-inverse: rgba(255, 255, 255, 0.2); 
+
+    // --- Testi ---
+    --text-primary: #{$black};
+    --text-secondary: #{$slate-gray};
+    --text-inverse: #{$black};
+    --text-link: #{$primary-blue};
+    --text-link-hover: #{$dark-blue};
+    --text-link-gold: #{$dark-blue};
+
+    // --- Bordi e Ombre ---
+    --border-color-light: #{$medium-gray};
+    --shadow-soft: 0 8px 25px rgba(68, 84, 106, 0.1);
+    --shadow-strong: 0 15px 35px rgba(68, 84, 106, 0.15);
+
+    // --- Variabili per l'Header Glass ---
+    --header-bg-glass: rgba(255, 255, 255, 0.7);
+    --header-bg-glass-sticky: rgba(255, 255, 255, 0.85);
+    --header-border-glass: rgba(233, 236, 239, 0.5);
+
+    // --- Stile del Titolo Hero (Tema Chiaro) ---
+    --hero-h1-color: #{$black};
+    --hero-h1-text-shadow: 
+        2px 2px 4px rgba(0,0,0,0.1),
+        0 0 15px rgba($primary-blue, 0.2);
+}

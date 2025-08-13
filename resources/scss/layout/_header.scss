@@ -1,0 +1,173 @@
+//======================================================================
+//  HEADER STYLING (Versione Finale - Animazione Fluida)
+//======================================================================
+
+//  variabile per la transizione, 
+$header-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+// 1. CONTENITORE ESTERNO
+// ---------------------------------------------------------------------
+// Gestisce il posizionamento e lo spazio.
+.site-header {
+    position: relative;
+    z-index: 1000;
+    padding: 1rem 0; 
+    transition: padding $header-transition;
+
+    // Stato STICKY:
+    &.is-sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0; 
+    }
+}
+
+// 2. CONTENITORE INTERNO
+// ---------------------------------------------------------------------
+
+.header-inner {
+
+    max-width: 95%; 
+    margin: 0 auto; // Lo centra orizzontalmente
+    
+    // Stile visivo
+    border-radius: 12px;
+    border: 1px solid var(--header-border-glass);
+    box-shadow: var(--shadow-soft);
+    background: var(--header-bg-glass);
+    transition: $header-transition;
+
+    // Effetto Vetro
+    @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    
+    padding: 0.75rem 1.5rem;
+}
+
+// Stato STICKY: modifica SOLO lo stile interno, NON la larghezza
+.site-header.is-sticky .header-inner {
+
+    // Appiattiamo solo i bordi superiori
+    border-radius: 0 0 12px 12px;
+    
+    // Aumentiamo l'ombra e cambiamo lo sfondo
+    box-shadow: var(--shadow-strong);
+    background: var(--header-bg-glass-sticky);
+}
+
+// 3. CONTENUTO DELL'HEADER
+// ---------------------------------------------------------------------
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+
+// 4. NAVIGAZIONE DESKTOP
+// ---------------------------------------------------------------------
+.main-navigation {
+    ul {
+        display: flex;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: var(--text-link);
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: $gold-gradient;
+            border-radius: 1px;
+            transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateX(-50%);
+        }
+
+        &:hover {
+            color: var(--text-link-gold, $gold-accent);
+            @include hover-glow($primary-blue);
+            background-color: transparent;
+            
+
+            &::after {
+                width: calc(100% - 2rem);
+            }
+        }
+
+        &.active {
+            color: var(--text-link-gold, $gold-accent);
+            @include hover-glow($primary-blue);
+            background-color: transparent;
+           
+            &::after {
+                width: calc(100% - 2rem);
+            }
+        }
+    }
+}
+
+// 5. AZIONI (AUTH, TEMA, HAMBURGER)
+// ---------------------------------------------------------------------
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+// ... (Tutto il tuo SCSS esistente per .hamburger-menu, .mobile-menu, ecc.)
+
+// 3. REGOLE RESPONSIVE
+// ---------------------------------------------------------------------
+// Sotto la risoluzione desktop...
+@media (max-width: $breakpoint-desktop) {
+    // Nascondi la navigazione desktop e i link di autenticazione
+    .main-navigation,
+    .header-actions .auth-links {
+        display: none;
+    }
+
+    // Mostra il bottone hamburger
+    .hamburger-menu {
+        display: block;
+    }
+
+    // --- NUOVE REGOLE PER SISTEMARE IL LAYOUT ---
+    .header-content {
+        // Invece di distribuire lo spazio, diciamo agli elementi
+        // di posizionarsi ai lati e lasciamo che il logo stia a sinistra.
+        justify-content: space-between; 
+        
+        // Diamo al logo lo spazio necessario per rimanere visibile
+        .site-logo {
+            flex-grow: 1; // Permette al logo di occupare lo spazio disponibile a sinistra
+        }
+
+        // Le azioni (hamburger, etc.) rimangono raggruppate a destra
+        .header-actions {
+            flex-shrink: 0; // Impedisce a questo contenitore di rimpicciolirsi
+        }
+    }
+    
+  
+}

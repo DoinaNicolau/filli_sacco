@@ -1,0 +1,256 @@
+//======================================================================
+// PAGES/HOME.SCSS - VERSIONE OTTIMIZZATA CON HERO 3D
+//======================================================================
+
+// Stile generale per le sezioni, rimane quasi invariato
+.about-us-intro,
+.latest-articles {
+    padding: 6rem 0;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// --- Sezione Hero (Completamente Ridisegnata) ---
+.hero-section {
+    padding: 5rem 0; // Leggermente meno padding verticale
+    background-color: var(--bg-inverse);
+    color: var(--text-inverse);
+    position: relative;
+    overflow: hidden; // Previene overflow
+
+    // Manteniamo il tuo pattern di sfondo, ma lo rendiamo più sottile
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        z-index: 0;
+    }
+    
+    .container {
+        position: relative;
+        z-index: 1;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+// Nuovo contenitore Flex per il layout a due colonne
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem; // Più spazio tra testo e modello 3D
+
+    // Colonna Sinistra: Testo
+    .hero-text {
+        flex: 1 1 45%; // Occupa il 45% dello spazio, lasciando più spazio al modello
+        text-align: left; // Allineiamo a sinistra per un look più pulito
+        animation: fadeInUp 1s ease-out;
+
+        h1 {
+            @include neon-text($gold-accent); 
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 550px; // Larghezza massima per la leggibilità
+            margin: 0 0 2.5rem 0; // Rimuoviamo l'auto margin per l'allineamento a sx
+            color: var(--text-inverse);
+            opacity: 0.85;
+        }
+    }
+
+    // Colonna Destra: Visualizzatore 3D
+    .hero-3d-viewer {
+        flex: 1 1 55%;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: scaleIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+        animation-fill-mode: both;
+    }
+}
+
+// Stile per il componente <model-viewer>
+model-viewer {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    border-radius: 15px;
+    --poster-color: transparent; // Sfondo del poster trasparente
+
+    // Barra di caricamento personalizzata
+    .progress-bar {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: rgba(255,255,255,0.2);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .update-bar {
+        background-color: var(--color-accent, $gold-accent); // Usa il tuo colore d'accento oro
+        width: 0%;
+        height: 100%;
+    }
+}
+
+
+// --- RESPONSIVE DESIGN PER LA HERO SECTION ---
+@media (max-width: $breakpoint-desktop) {
+    .hero-section {
+        padding: 4rem 0;
+    }
+
+    .hero-content {
+        flex-direction: column; // Impila le colonne
+        gap: 3rem;
+
+        .hero-text {
+            text-align: center; // Torna al centro su mobile
+            order: 2; // Mette il testo DOPO il modello 3D su mobile
+
+            h1 {
+            color: var(--hero-h1-color);
+            text-shadow: var(--hero-h1-text-shadow);
+
+            // Il resto dello stile rimane invariato
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            }
+
+            p {
+                
+                margin-left: auto;
+                margin-right: auto;
+                color: var(--text-inverse); // Prende il colore del testo per sfondi "inversi"
+                opacity: 0.85;
+            }
+        }
+
+        .hero-3d-viewer {
+            order: 1; // Modello 3D in cima
+            width: 100%;
+            min-height: 350px; // Altezza ridotta per mobile
+        }
+    }
+
+    model-viewer {
+        min-height: 350px;
+    }
+}
+
+// --- Sezione Chi Siamo (Intro) ---
+.about-us-intro {
+    background-color: var(--bg-secondary);
+    
+    h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--text-secondary);
+    }
+}
+
+
+// --- Sezione Ultimi Articoli ---
+.latest-articles {
+    background-color: var(--bg-primary);
+
+    h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--text-primary);
+        margin-bottom: 3rem;
+    }
+    
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+    }
+    
+    .article-card {
+        background-color: var(--bg-primary);
+        border: 1px solid var(--border-color-light);
+        border-radius: 12px;
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s ease-out forwards;
+
+        @for $i from 1 through 3 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.2}s;
+            }
+        }
+
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            text-decoration: none;
+            color: var(--text-link);
+            font-weight: bold;
+            align-self: flex-start;
+
+            &:hover {
+                color: var(--text-link-hover);
+            }
+
+            &::after {
+                content: ' →';
+                transition: transform 0.2s ease;
+            }
+
+            &:hover::after {
+                transform: translateX(5px);
+            }
+        }
+    }
+}

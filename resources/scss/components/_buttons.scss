@@ -1,0 +1,36 @@
+// Stili globali per i bottoni, riutilizzabili in tutto il sito.
+
+.btn {
+    display: inline-block; // Importante per un comportamento corretto
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    // Bottone primario (dorato)
+    .btn-primary {
+        // ... stili base ...
+        @include neon-border($primary-blue, 25px);
+        transition: all 0.3s ease;
+        
+        &:hover {
+            background-color: rgba($primary-blue, 0.1);
+            @include hover-glow($primary-blue);
+        }
+    }
+
+    // Bottone secondario (blu, si adatta al tema)
+    &.btn-outline {
+        border-color: var(--link-color, #{$primary-blue}); // Usa la variabile CSS, con un fallback SCSS
+        color: var(--link-color, #{$primary-blue});
+
+        &:hover {
+            background-color: var(--link-color, #{$primary-blue});
+            color: var(--bg-primary, #{$white}); // Usa lo sfondo primario del tema per il testo
+        }
+    }
+}

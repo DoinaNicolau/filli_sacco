@@ -1,0 +1,38 @@
+// ===== _mixins.scss (con effetti di luce) =====
+
+// --- MIXIN PER TESTO NEON ---
+// Crea un effetto di bagliore colorato attorno al testo.
+// Uso: @include neon-text($primary-blue);
+@mixin neon-text($color) {
+    // Usiamo text-shadow multipli per creare un bagliore morbido e diffuso
+    text-shadow: 
+        0 0 5px rgba($color, 0.8),
+        0 0 10px rgba($color, 0.6),
+        0 0 20px rgba($color, 0.4),
+        0 0 40px rgba($color, 0.2);
+}
+
+// --- MIXIN PER BORDO NEON ---
+// Crea un bordo luminoso attorno a un elemento (es. una card o un bottone).
+// Uso: @include neon-border($primary-blue);
+@mixin neon-border($color, $radius: 12px) {
+    border-radius: $radius;
+    // Usiamo box-shadow per simulare il bagliore del bordo
+    box-shadow: 
+        0 0 5px rgba($color, 0.7),
+        0 0 10px rgba($color, 0.5),
+        inset 0 0 5px rgba($color, 0.6);
+    border: 1px solid rgba($color, 0.8);
+}
+
+// --- MIXIN PER GLOW SU HOVER ---
+// Aggiunge un bagliore più intenso quando si passa il mouse.
+// Uso: &:hover { @include hover-glow($primary-blue); }
+@mixin hover-glow($color) {
+    text-shadow: 
+        0 0 10px rgba($color, 0.9),
+        0 0 20px rgba($color, 0.7),
+        0 0 40px rgba($color, 0.5),
+        0 0 80px rgba($color, 0.3);
+    color: lighten($color, 20%); // Rende il testo stesso più luminoso
+}

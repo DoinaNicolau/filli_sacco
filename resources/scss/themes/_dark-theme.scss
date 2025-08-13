@@ -1,0 +1,35 @@
+// ===== _dark-theme.scss (TEMA SCURO) =====
+
+html.dark-mode {
+    // --- Sfondi ---
+    --bg-primary: #{$navy-blue};
+    --bg-secondary: #{lighten($navy-blue, 5%)};
+    // Per la Hero, sfondo solido nel tema scuro
+    --bg-inverse: #{$navy-blue}; 
+
+    // --- Testi ---
+    --text-primary: #{rgba($white, 0.9)};
+    --text-secondary: #{rgba($white, 0.65)};
+    --text-inverse: #{$white};
+    --text-link: #{lighten($primary-blue, 15%)};
+    --text-link-hover: #{lighten($primary-blue, 25%)};
+    --text-link-gold: #{$gold-accent};
+
+    // --- Bordi e Ombre ---
+    --border-color-light: #{lighten($navy-blue, 10%)};
+    --shadow-soft: 0 8px 25px rgba(0, 0, 0, 0.2);
+    --shadow-strong: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+    // --- Variabili per l'Header Glass ---
+    --header-bg-glass: rgba(5, 15, 37, 0.6);
+    --header-bg-glass-sticky: rgba(5, 15, 37, 0.8);
+    --header-border-glass: rgba(68, 84, 106, 0.4);
+
+    // --- Stile del Titolo Hero (Tema Scuro) ---
+    --hero-h1-color: #{$white};
+    --hero-h1-text-shadow: 
+        0 0 5px rgba($gold-accent, 0.8),
+        0 0 10px rgba($gold-accent, 0.6),
+        0 0 20px rgba($gold-accent, 0.4),
+        0 0 40px rgba($gold-accent, 0.2);
+}

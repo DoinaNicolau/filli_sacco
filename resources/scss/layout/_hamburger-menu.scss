@@ -1,0 +1,120 @@
+
+//======================================================================
+
+// 1. HAMBURGER BUTTON
+// ---------------------------------------------------------------------
+.hamburger-menu {
+    display: none; // Nascosto di default su desktop
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010; // Deve stare sopra gli altri elementi dell'header
+    
+    span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: var(--text-primary);
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    // Animazione per trasformarlo in una "X"
+    &.is-active {
+        span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        span:nth-child(2) {
+            opacity: 0;
+        }
+        span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    }
+}
+
+// 2. MOBILE MENU PANEL
+// ---------------------------------------------------------------------
+.mobile-menu {
+    display: block; // Visibile nel DOM ma nascosto fuori schermo
+    position: absolute;
+    top: 100%; // Posizionato esattamente sotto l'header
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    
+    // Stile Vetro, coerente con l'header
+    background: var(--header-bg-glass);
+    @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    border-top: 1px solid var(--header-border-glass);
+    
+    // Nascosto di default (fuori vista e non cliccabile)
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    
+    // Stato aperto
+    &.is-open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    // Stile dei link nel menu mobile
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    }
+
+    .mobile-auth-links {
+        margin-top: 2rem;
+        text-align: center;
+        .btn {
+            width: 80%;
+            max-width: 250px;
+        }
+    }
+}
+
+// 3. REGOLE RESPONSIVE
+// ---------------------------------------------------------------------
+// Sotto la risoluzione desktop...
+@media (max-width: $breakpoint-desktop) {
+    // Nascondi la navigazione desktop e i link di autenticazione
+    .main-navigation,
+    .header-actions .auth-links {
+        display: none;
+    }
+
+    // Mostra il bottone hamburger
+    .hamburger-menu {
+        display: block;
+    }
+}
+
+// 4. PREVENIRE LO SCROLL
+// ---------------------------------------------------------------------
+// Quando il menu è aperto, blocca lo scroll del body
+body.mobile-menu-open {
+    overflow: hidden;
+}

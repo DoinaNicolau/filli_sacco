@@ -1,0 +1,10 @@
+// In _cards.scss
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color-light);
+    box-shadow: var(--shadow-soft);
+    
+    &:hover {
+        box-shadow: var(--shadow-strong);
+    }
+}

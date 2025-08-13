@@ -1,0 +1,134 @@
+.equipment-form-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    background-color: $white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    border: 1px solid #eef0f3; // Un grigio molto chiaro per un bordo soft
+    box-shadow: 0 10px 30px rgba($slate-gray, 0.1);
+
+    h1, h2 {
+        text-align: center;
+        color: $dark-blue; // Usiamo il tuo blu scuro per i titoli principali
+        margin-bottom: 2.5rem;
+    }
+
+    form {
+        fieldset {
+            border: none;
+            border-top: 1px solid #eef0f3;
+            padding: 2rem 0;
+            margin: 0;
+            
+            &:first-of-type {
+                border-top: none;
+                padding-top: 0;
+            }
+        }
+
+        legend {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: $primary-blue; // Il tuo blu primario per le legende
+            padding: 0;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: $slate-gray; // Il tuo grigio/blu per le etichette
+            font-size: 0.9em;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #dcdfe4;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+            background-color: $light-gray; // Il tuo grigio chiaro per lo sfondo dei campi
+            color: $black; // Testo nero per leggibilità
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+            &:focus {
+                outline: none;
+                border-color: $primary-blue;
+                box-shadow: 0 0 0 3px rgba($primary-blue, 0.2);
+            }
+            
+            &.is-invalid {
+                border-color: #e3342f; // Manteniamo un rosso standard per gli errori
+                &:focus {
+                    box-shadow: 0 0 0 3px rgba(#e3342f, 0.2);
+                }
+            }
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .invalid-feedback {
+            color: #e3342f; // Rosso standard per i messaggi di errore
+            font-size: 0.875em;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            
+            label {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: normal;
+                font-size: 1em;
+                color: $black;
+            }
+            input[type="radio"] {
+                width: auto;
+                accent-color: $primary-blue;
+            }
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: $gold-gradient; // Il tuo gradiente dorato
+            color: $navy-blue; // Il tuo blu più scuro per il testo del bottone
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(253, 199, 102, 0.3);
+
+            &:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 7px 25px rgba(253, 199, 102, 0.4);
+            }
+            &:active {
+                transform: translateY(0);
+            }
+        }
+    }
+}
