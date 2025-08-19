@@ -1,7 +1,8 @@
 //======================================================================
 //  HEADER STYLING (Versione Finale - Animazione Fluida)
 //======================================================================
-
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
 //  variabile per la transizione, 
 $header-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -11,16 +12,19 @@ $header-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 .site-header {
     position: relative;
     z-index: 1000;
-    padding: 1rem 0; 
-    transition: padding $header-transition;
+    // Spazio sopra e sotto la navbar. Questo sparisce allo scroll.
+    padding: 1rem 0;
+    transition: all $header-transition;
 
-    // Stato STICKY:
     &.is-sticky {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        padding: 0; 
+        right: 0; // Usiamo left e right 0 per centrare il contenuto
+        padding: 0;
+        padding: 1rem 0; // Manteniamo il padding per dare altezza
+        background-color: var(--bg-primary);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -28,11 +32,10 @@ $header-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 // ---------------------------------------------------------------------
 
 .header-inner {
-
     max-width: 95%; 
-    margin: 0 auto; // Lo centra orizzontalmente
-    
-    // Stile visivo
+    margin: 0 auto;
+
+    // Stile Vetro e Bordi
     border-radius: 12px;
     border: 1px solid var(--header-border-glass);
     box-shadow: var(--shadow-soft);
@@ -44,20 +47,20 @@ $header-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
     }
-    
-    
-    padding: 0.75rem 1.5rem;
 }
+
 
 // Stato STICKY: modifica SOLO lo stile interno, NON la larghezza
 .site-header.is-sticky .header-inner {
-
-    // Appiattiamo solo i bordi superiori
-    border-radius: 0 0 12px 12px;
-    
-    // Aumentiamo l'ombra e cambiamo lo sfondo
+     max-width: 100%;
+    border-radius: 0;
     box-shadow: var(--shadow-strong);
     background: var(--header-bg-glass-sticky);
+}
+.header-container {
+    // Questo gestisce solo il padding interno della navbar
+    // Puoi aggiustare questo valore come preferisci (es. 1rem)
+    padding: 0 1.5rem;
 }
 
 // 3. CONTENUTO DELL'HEADER
@@ -67,6 +70,7 @@ $header-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
+    min-height: 60px;
 }
 
 

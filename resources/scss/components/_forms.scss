@@ -1,0 +1,166 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+// --- CONTENITORE PRINCIPALE ---
+// --- IL FORM ---
+
+// Sta DENTRO al cerchio e non può uscire.
+#auth-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+     margin: 15vh auto 20rem auto;
+    
+    
+    
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+    z-index: 10; // Sta sopra
+
+
+    // Form annidato correttamente
+    form {
+        width: 100%;
+        max-width: 350px;
+        padding: 0 1rem;
+
+    }
+
+    h2 {
+        font-size: 2.5em;
+        color: var(--text-link-gold);
+        margin-bottom: 2rem;
+        text-align: center;
+        @include neon-text($gold-accent);
+    }
+
+    // --- CAMPI INPUT ---
+    .input-box {
+        position: relative;
+        margin: 28px 0;
+    }
+
+    input {
+        width: 100%;
+        height: 50px;
+        background-color: var(--bg-secondary);
+        border: 2px solid var(--border-color-light);
+        outline: none;
+        border-radius: 40px;
+        font-size: 1em;
+        color: var(--text-primary);
+        padding: 0 20px;
+        transition: 0.5s ease;
+
+        &:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 10px rgba($primary-blue, 0.5);
+        }
+
+        &:focus ~ label,
+        &:not(:placeholder-shown) ~ label {
+            top: -10px;
+            font-size: 0.85em;
+            background-color: var(--bg-primary);
+            padding: 0 8px;
+            color: var(--color-primary);
+        }
+    }
+
+    label {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        font-size: 1em;
+        color: var(--text-secondary);
+        pointer-events: none;
+        transition: 0.5s ease;
+    }
+
+    // --- BOTTONI E LINK ---
+     .btn {
+        width: 100%;
+    }
+    
+    .forgot-pass {
+        margin: 15px 0;
+        text-align: center; 
+        font-size: 0.9em;
+    }
+
+    .signup-link {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 0.9em;
+    }
+}
+
+// --- L'ANIMAZIONE ---
+
+
+// --- CONTENITORE DELL'ANIMAZIONE ---
+
+#auth-container span {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    transform: rotate(calc(var(--i) * (360deg / 50)));
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 6px;
+        background: var(--border-color-light);
+        border-radius: 8px;
+        animation: auth-blink-final 4s linear infinite;
+        animation-delay: calc(var(--i) * (4s / 50));
+    }
+}
+
+
+
+
+
+
+// --- KEYFRAMES ---
+@keyframes auth-blink-final {
+    0% {
+        background: $primary-blue;
+        box-shadow: 0 0 10px rgba($primary-blue, 0.8);
+    }
+    25% {
+        background: var(--border-color-light);
+        box-shadow: none;
+    }
+}
+
+ 
+
+// --- RESPONSIVE DESIGN ---
+@media (max-width: 768px) {
+    #auth-container {
+        // --- NON ESCE DAI BORDI E SI CENTRA ---
+        width: 60%; // Sarà sempre più piccolo dello schermo
+        height: auto; // L'altezza si adatta
+        aspect-ratio: 1 / 2; // Mantiene la forma di cerchio perfetto
+        margin: 15vh auto 5rem auto; // Meno spazio sopra, ma sempre centrato
+    }
+
+    // Il form si adatta automaticamente. Dobbiamo solo rimpicciolire i font.
+    h2 { font-size: 1.8em; margin-bottom: 1rem; }
+    .input-box { margin: 12px 0; }
+    input { height: 45px; }
+    .forgot-pass, .signup-link { font-size: 0.8em; text-align: center; }
+
+    // Rimpiccioliamo l'animazione
+    #auth-container span::before {
+        width: 40px;
+    }
+}

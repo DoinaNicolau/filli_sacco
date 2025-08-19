@@ -1,0 +1,9 @@
+// In resources/scss/base/_reset.scss
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box; // Dice al browser di calcolare le larghezze correttamente
+    margin: 0;
+    padding: 0;
+}

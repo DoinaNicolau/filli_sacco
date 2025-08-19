@@ -1,32 +1,53 @@
+<x-layout>
+    {{-- Contenitore principale per la pagina, centra il form --}}
+    <div class="auth-container">
+        
+        
+            {{-- Qui inseriamo i 50 span per l'animazione --}}
+            @for ($i = 0; $i < 50; $i++)
+                <span style="--i:{{ $i }};"></span>
+            @endfor
+      
 
- 
- <x-layout> 
- <div class="container">
-    <form method="POST" action="{{ route('login') }}">
-            @csrf
-            <h1 class="h3 mb-3 fw-normal">Please register</h1>
-        <div>
-            <label for="exampleInputName1" class="form-label">Name</label>
-            <input type="text" class="form-control" id="exampleInputName1" name='name'>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text" name='email'>We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name='password'>
-        </div>
-        <div>
-            <label for="password_confirmation" class='form-label'>Password Confirmation</label>
-            <input type="password" class="form-control" id="password_confirmation" name='password_confirmation'>
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
-</div>
- </x-layout> 
+       
+            
+            <form method="POST" action="{{ route('register') }}"> {{-- Assicurati che l'action sia corretta --}}
+                @csrf
+                
+                <h2>Registrazione</h2>
+
+                {{-- Input per il Nome --}}
+                <div class="input-box">
+                    <input type="text" id="name" name="name" required value="{{ old('name') }}">
+                    <label for="name">Nome</label>
+                </div>
+
+                {{-- Input per l'Email --}}
+                <div class="input-box">
+                    <input type="email" id="email" name="email" required value="{{ old('email') }}">
+                    <label for="email">Email</label>
+                </div>
+
+                {{-- Input per la Password --}}
+                <div class="input-box">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                </div>
+
+                {{-- Input per la Conferma Password --}}
+                <div class="input-box">
+                    <input type="password" id="password_confirmation" name="password_confirmation" required>
+                    <label for="password_confirmation">Conferma Password</label>
+                </div>
+
+                {{-- Bottone di invio --}}
+                <button type="submit" class="btn btn-primary-form">Registrati</button>
+
+                {{-- Link per chi ha già un account --}}
+                <div class="form-link">
+                    <p>Hai già un account? <a href="{{ route('login') }}">Accedi</a></p>
+                </div>
+            </form>
+        
+    </div>
+</x-layout>

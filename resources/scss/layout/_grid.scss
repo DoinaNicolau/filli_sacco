@@ -2,15 +2,9 @@
 
 .container {
     width: 100%;
-    // Imposta la larghezza massima del contenuto.
-    // Questo crea l'effetto "incorniciato" su schermi grandi.
-    max-width: 1200px; // Un valore comune per siti moderni. Puoi aumentarlo (es. 1366px, 1440px).
-
-    // Centra il contenitore nella pagina.
+    max-width: 1200px; 
     margin-left: auto;
     margin-right: auto;
-    // Aggiunge spazio a sinistra e a destra DENTRO il container.
-    // Questo previene che il testo tocchi i bordi su schermi più piccoli della max-width.
-    
-    padding: 0.75rem 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }

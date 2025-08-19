@@ -1,0 +1,61 @@
+// In resources/scss/layout/_footer.scss
+
+.site-footer {
+    // Sfondo scuro coerente con il resto del sito
+    background-color: var(--bg-primary); 
+    
+    // Testo secondario, meno invadente
+    color: var(--text-secondary); 
+    font-size: 0.9em;
+    text-align: center;
+    
+    // Spaziatura interna per dare respiro al contenuto
+    padding: 2.5rem 0;
+    
+    position: relative; // Necessario per la linea neon
+    margin-top: auto; // Aiuta a spingerlo in fondo con il layout flex del body
+
+    // --- LA LINEA NEON DECORATIVA ---
+    // Un tocco di stile che richiama il tema del sito
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px; // Larghezza della linea
+        height: 2px;
+        background-color: $primary-blue;
+        border-radius: 2px;
+        
+        // L'effetto "glow"
+        box-shadow: 0 0 5px rgba($primary-blue, 0.8),
+                    0 0 10px rgba($primary-blue, 0.6),
+                    0 0 15px rgba($primary-blue, 0.4);
+    }
+
+    .container {
+        // Stile standard per il contenitore
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem; // Padding laterale per non far toccare il testo ai bordi su mobile
+    }
+
+    p {
+        margin: 0; // Rimuoviamo i margini di default
+        line-height: 1.6; // Aumentiamo l'interlinea per leggibilità
+
+        // Aggiungiamo un po' di spazio solo sotto al primo paragrafo
+        &:first-child {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+// --- RESPONSIVE PER MOBILE ---
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 2rem 0; // Riduciamo leggermente lo spazio verticale
+        font-size: 0.85em; // Testo un po' più piccolo
+    }
+}

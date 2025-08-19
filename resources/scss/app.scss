@@ -18,13 +18,15 @@
 @import 'layout/footer';
 @import 'layout/navigation';
 @import 'layout/hamburger-menu';
-@import 'layout/wrapper';
+@import 'layout/grid';
 
 // 5. Components (i nostri mattoncini)
 @import 'components/buttons';
 @import 'components/cards';
 @import 'components/equipment-form'; // Ecco il nostro form!
 @import 'components/theme-toggle';
+@import 'components/forms';
+@import 'components/buttons';
 
 // 6. Pages (stili specifici per pagina)
 @import 'pages/home';

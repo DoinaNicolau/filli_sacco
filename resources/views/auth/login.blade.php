@@ -1,22 +1,37 @@
-<x-layout> 
- <div class="container">
-    <form method="POST" action="{{ route('login') }}">
+<x-layout>
+    <div id="auth-container">
+   
+        
+           
+        
+        <form method="POST" action="{{ route('login') }}">
             @csrf
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text" name='email'>We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name='password'>
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
- </x-layout>
+            <h2>Login</h2>
+            
+            <div class="input-box">
+                <input id="email" type="email" name="email" required value="{{ old('email') }}" placeholder=" ">
+                <label for="email">Email</label>
+            </div>
+            
+            <div class="input-box">
+                <input id="password" type="password" name="password" required placeholder=" ">
+                <label for="password">Password</label>
+            </div>
+
+            <div class="forgot-pass">
+                <a href="#">Password dimenticata?</a>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Accedi</button>
+
+            <div class="signup-link">
+                <p>Non hai un account? <a href="{{ route('register') }}">Registrati</a></p>
+            </div>
+        </form>
+        
+         {{-- Qui inseriamo i 50 span per l'animazione --}}
+            @for ($i = 0; $i < 50; $i++)
+                <span style="--i:{{ $i }};"></span>
+            @endfor
+    </div>
+</x-layout>

@@ -10,11 +10,11 @@
  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 <body>
     <x-navbar />
-    <div class="site-wrapper">
+  
         <main>
             {{ $slot }} 
         </main>
-    </div>
+    
    <x-footer />
 </body>
 </html>
