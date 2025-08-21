@@ -9,8 +9,9 @@
 
     h1, h2 {
         text-align: center;
-        color: $dark-blue; // Usiamo il tuo blu scuro per i titoli principali
         margin-bottom: 2.5rem;
+        color: var(--h2-color);
+        text-shadow: var(--h2-text-shadow);
     }
 
     form {

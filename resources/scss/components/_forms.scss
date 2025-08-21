@@ -32,10 +32,11 @@
 
     h2 {
         font-size: 2.5em;
-        color: var(--text-link-gold);
         margin-bottom: 2rem;
         text-align: center;
-        @include neon-text($gold-accent);
+        color: var(--h2-color);
+        text-shadow: var(--h2-text-shadow);
+        transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
     // --- CAMPI INPUT ---
@@ -121,6 +122,7 @@
         border-radius: 8px;
         animation: auth-blink-final 4s linear infinite;
         animation-delay: calc(var(--i) * (4s / 50));
+        z-index: -1;
     }
 }
 
@@ -146,17 +148,26 @@
 // --- RESPONSIVE DESIGN ---
 @media (max-width: 768px) {
     #auth-container {
-        // --- NON ESCE DAI BORDI E SI CENTRA ---
-        width: 60%; // Sarà sempre più piccolo dello schermo
-        height: auto; // L'altezza si adatta
-        aspect-ratio: 1 / 2; // Mantiene la forma di cerchio perfetto
-        margin: 15vh auto 5rem auto; // Meno spazio sopra, ma sempre centrato
+        
+        width: 50% !important; // Sarà sempre più piccolo dello schermo
+        height: 500px !important; // L'altezza si adatta
+        border-radius: 35% !important; // Mantiene la forma di cerchio perfetto
+        margin: 7vh auto;
+
     }
 
     // Il form si adatta automaticamente. Dobbiamo solo rimpicciolire i font.
-    h2 { font-size: 1.8em; margin-bottom: 1rem; }
-    .input-box { margin: 12px 0; }
-    input { height: 45px; }
+    h2 { font-size: 1.8em;
+         margin-bottom: 1rem;
+        color: var(--h2-color);
+        text-shadow: var(--h2-text-shadow);
+         }
+    .input-box { 
+        margin: 12px 0;
+     }
+    input { 
+        height: 45px;
+     }
     .forgot-pass, .signup-link { font-size: 0.8em; text-align: center; }
 
     // Rimpiccioliamo l'animazione

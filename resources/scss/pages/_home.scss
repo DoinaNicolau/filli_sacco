@@ -48,7 +48,9 @@
         animation: fadeInUp 1s ease-out;
 
         h1 {
-            @include neon-text($gold-accent); 
+            color: var(--hero-h1-color);
+            text-shadow: var(--hero-h1-text-shadow);
+            transition: color 0.3s ease, text-shadow 0.3s ease; 
             font-size: 3.5rem;
             font-weight: 700;
             line-height: 1.2;
@@ -117,8 +119,8 @@ model-viewer {
             order: 2; // Mette il testo DOPO il modello 3D su mobile
 
             h1 {
-            color: var(--hero-h1-color);
-            text-shadow: var(--hero-h1-text-shadow);
+            
+            
 
             // Il resto dello stile rimane invariato
             font-size: 3.5rem;
@@ -151,13 +153,14 @@ model-viewer {
 
 // --- Sezione Chi Siamo (Intro) ---
 .about-us-intro {
-    background-color: var(--bg-secondary);
+     background-color: var(--bg-secondary);
     
-    h2 {
+    h2 { 
         text-align: center;
         font-size: 2.5rem;
-        color: var(--text-primary);
         margin-bottom: 1rem;
+        color: var(--bg-white);
+        text-shadow: var(--h2-text-shadow);
     }
     
     p {
@@ -175,11 +178,21 @@ model-viewer {
 .latest-articles {
     background-color: var(--bg-primary);
 
+    
     h2 {
         text-align: center;
         font-size: 2.5rem;
         color: var(--text-primary);
         margin-bottom: 3rem;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+
+        // --- MODIFICA TEMPORANEA ---
+        
+        
+        text-shadow: var(--h2-text-shadow);
+
+        
+    
     }
     
     .articles-grid {

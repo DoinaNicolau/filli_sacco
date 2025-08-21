@@ -26,10 +26,20 @@ html.dark-mode {
     --header-border-glass: rgba(68, 84, 106, 0.4);
 
     // --- Stile del Titolo Hero (Tema Scuro) ---
-    --hero-h1-color: #{$white};
-    --hero-h1-text-shadow: 
+    --hero-h1-color: #{$gold-accent};
+    --hero-h1-text-shadow: #{
         0 0 5px rgba($gold-accent, 0.8),
         0 0 10px rgba($gold-accent, 0.6),
         0 0 20px rgba($gold-accent, 0.4),
-        0 0 40px rgba($gold-accent, 0.2);
+        0 0 40px rgba($gold-accent, 0.2)
+    };
+    // Dark theme
+     // Effetto NEON per i titoli H2 nel tema scuro
+    --h2-color: #{$gold-accent}; // Il testo sarà dorato
+    --h2-text-shadow: #{
+        0 0 5px rgba($gold-accent, 0.8),
+        0 0 10px rgba($gold-accent, 0.6),
+        0 0 20px rgba($gold-accent, 0.4),
+        0 0 40px rgba($gold-accent, 0.2)
+    };
 }

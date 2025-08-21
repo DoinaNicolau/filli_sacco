@@ -1,7 +1,10 @@
 <x-layout>
     <div id="auth-container">
    
-        
+         {{-- Qui inseriamo i 50 span per l'animazione --}}
+            @for ($i = 0; $i < 50; $i++)
+                <span style="--i:{{ $i }};"></span>
+            @endfor
            
         
         <form method="POST" action="{{ route('login') }}">
@@ -25,13 +28,10 @@
             <button class="btn btn-primary" type="submit">Accedi</button>
 
             <div class="signup-link">
-                <p>Non hai un account? <a href="{{ route('register') }}">Registrati</a></p>
+                <a href="{{ route('register') }}">Non hai un account?  Registrati</a>
             </div>
         </form>
         
-         {{-- Qui inseriamo i 50 span per l'animazione --}}
-            @for ($i = 0; $i < 50; $i++)
-                <span style="--i:{{ $i }};"></span>
-            @endfor
+        
     </div>
 </x-layout>

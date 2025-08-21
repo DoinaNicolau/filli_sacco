@@ -12,6 +12,17 @@
         0 0 40px rgba($color, 0.2);
 }
 
+// --- MIXIN PER TITOLO IN TEMA CHIARO (Effetto Profondità) ---
+// Crea un'ombra sottile e scura per migliorare la leggibilità su sfondi chiari.
+// Ideale come alternativa all'effetto neon.
+// Uso: @include light-theme-title-effect($dark-blue);
+@mixin light-theme-title-effect($color) {
+    color: $color; // Imposta il colore principale del testo
+    // Rimuove l'ombra neon precedente, se presente
+    text-shadow: none; 
+    text-shadow: 1px 2px 3px rgba(darken($color, 20%), 0.25);
+}
+
 // --- MIXIN PER BORDO NEON ---
 // Crea un bordo luminoso attorno a un elemento (es. una card o un bottone).
 // Uso: @include neon-border($primary-blue);

@@ -19,15 +19,24 @@
                 </nav>
 
                 <!-- SEZIONE 3: Azioni (Auth, Tema, Hamburger) -->
-                <div class="header-actions">
-                    <!-- Link di autenticazione -->
-                    <div class="auth-links">
-                        @guest
-                            <a href="{{ route('login') }}" class="btn btn-outline">Accedi</a>
-                        @else
-                            <a href="#" class="btn btn-primary">Dashboard</a>
-                        @endguest
-                    </div>
+                <div class="auth-links">
+                    @auth
+                        {{-- Menu per l'utente autenticato --}}
+                        <div class="user-menu">
+                            {{-- Puoi rendere questo un link al profilo utente --}}
+                            <span class="user-name">Ciao, {{ auth()->user()->name }}</span>
+
+                            {{-- Form per il logout --}}
+                            <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                                @csrf
+                                <button type="submit" class="btn btn-outline">Logout</button>
+                            </form>
+                        </div>
+                    @else
+                        {{-- Altrimenti (se è un ospite), mostra il link per accedere --}}
+                        <a href="{{ route('login') }}" class="btn btn-outline">Accedi</a>
+                    @endauth
+                </div>
 
                     <!-- Interruttore Tema Giorno/Notte -->
                     <label class="switch">
@@ -69,11 +78,19 @@
                 </ul>
             </nav>
             <div class="mobile-auth-links">
-                @guest
-                    <a href="{{ route('login') }}" class="btn btn-primary">Accedi</a>
-                @else
-                    <a href="#" class="btn btn-primary">Dashboard</a>
-                @endguest
+                <div class="auth-links">
+                   <div class="auth-links">
+                         @auth
+                            {{-- Form per il logout anche su mobile --}}
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form>
+                        @else
+                            {{-- Se l'utente è un ospite --}}
+                            <a href="{{ route('login') }}" class="btn btn-primary">Accedi</a>
+                        @endauth
+                    </div>
             </div>
         </div>
     </div>

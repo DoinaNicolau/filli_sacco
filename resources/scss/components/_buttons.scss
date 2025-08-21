@@ -14,11 +14,14 @@
     // Bottone primario (dorato)
     .btn-primary {
         // ... stili base ...
-        @include neon-border($primary-blue, 25px);
+        background-color: transparent;
+        color: var(--color-primary);
+        @include neon-border($primary-blue, 50px);
         transition: all 0.3s ease;
         
         &:hover {
             background-color: rgba($primary-blue, 0.1);
+            color: lighten($primary-blue, 20%);
             @include hover-glow($primary-blue);
         }
     }

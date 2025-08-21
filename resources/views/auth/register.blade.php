@@ -41,7 +41,7 @@
                 </div>
 
                 {{-- Bottone di invio --}}
-                <button type="submit" class="btn btn-primary-form">Registrati</button>
+                <button type="submit" class="btn btn-primary">Registrati</button>
 
                 {{-- Link per chi ha già un account --}}
                 <div class="form-link">

@@ -31,7 +31,16 @@
 
     // --- Stile del Titolo Hero (Tema Chiaro) ---
     --hero-h1-color: #{$black};
-    --hero-h1-text-shadow: 
-        2px 2px 4px rgba(0,0,0,0.1),
-        0 0 15px rgba($primary-blue, 0.2);
+    --hero-h1-text-shadow: #{
+        1px 2px 3px rgba(0,0,0,0.15),
+        0 0 10px rgba($primary-blue, 0.1)
+    }; // Ombra morbida e sottile
+    
+    --h2-color: #{$dark-blue};
+    --h2-text-shadow: #{
+        2px 2px 0px rgba($primary-blue, 0.4),
+        4px 4px 5px rgba(0, 0, 0, 0.1)
+    };          // Ombra scura morbida per profondità
+
+
 }
